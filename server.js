@@ -15,6 +15,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+require("./controllers/api.js")(app);
+
 app.listen(PORT,()=>{
   console.log(`Listening in on...${PORT}`);
 })

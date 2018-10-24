@@ -1,13 +1,16 @@
-import React, {Component} from "react";
+import React from "react";
+import "./Results.css";
 
-class Results extends Component {
-  render(){
-    return(
+const Results = (props) => {
+  return(
+    <div className="resultDiv">
+      <h3><a href={props.loc}>{props.title}</a></h3>
+      <h4>{props.descrip}</h4>
       <div>
-        Results
+        <button>Save</button>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Results;
