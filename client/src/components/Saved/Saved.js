@@ -23,7 +23,7 @@ class Saved extends Component {
   populate = () => {
     if(this.state.results.length !== 0){
       return this.state.results.map((item,i) => {
-        return <Results key={i} title={item.title} descrip={item.descrip} loc={item.loc} onDelete={() => {this.handleDelete(item._id)}}/>
+        return <Results key={i} date={item.date} title={item.title} descrip={item.descrip} loc={item.loc} onDelete={() => {this.handleDelete(item._id)}}/>
       });
     }
   }

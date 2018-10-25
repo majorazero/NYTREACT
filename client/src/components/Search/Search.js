@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import Results from "../Results/Results.js";
+import Saved from "../Saved/Saved.js";
 import "./Search.css";
 
 class Search extends Component {
@@ -19,13 +20,15 @@ class Search extends Component {
 
   fetch = () => {
     axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=702eb3676cd5414c906e440d5b73c3f7&q=${this.state.topic}&begin_date=${this.state.sYear.replace(/-/g,"")}&end_date=${this.state.eYear.replace(/-/g,"")}`).then((response) => {
+      console.log(response.data);
       this.setState({
         results: response.data.response.docs.map((item,i) => {
           if (i < 5){
             return {
               title: item.headline.main,
               descrip: item.snippet,
-              loc: item.web_url
+              loc: item.web_url,
+              date: item.pub_date.substring(0,10).replace(/-/g,"/")
             };
           }
         }).slice(0,5)
@@ -36,7 +39,7 @@ class Search extends Component {
   populate = () => {
     if(this.state.results.length !== 0){
       return this.state.results.map((item,i) => {
-        return <Results key={i} title={item.title} descrip={item.descrip} loc={item.loc} clickSave={() => {this.handleSave(i)}} />
+        return <Results key={i} date={item.date} title={item.title} descrip={item.descrip} loc={item.loc} clickSave={() => {this.handleSave(i)}} />
       });
     }
   }
@@ -82,9 +85,11 @@ class Search extends Component {
         </div>
 
         <div className="resultsBox">
-          <h1>Results</h1><span>{this.state.message}</span>
+          <h2>Results</h2><span>{this.state.message}</span>
           {this.populate()}
         </div>
+
+        <Saved />
 
       </div>
     );

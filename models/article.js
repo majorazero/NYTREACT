@@ -6,7 +6,8 @@ const articleSchema = new Schema({
           unique:true},
   descrip: String,
   loc: {type:String,
-          unique:true}
+          unique:true},
+  date: String
 });
 
 const Article = mongoose.model("Article",articleSchema);
