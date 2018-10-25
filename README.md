@@ -1,6 +1,9 @@
 # reactNYTArticleSaver
 Let's make a full stack apps.
 
+# Deployment
+The app is currently [deployed]("https://glacial-ridge-38624.herokuapp.com/") on Heroku! 
+
 # About the App
 This is a fullstack (MERN) app that searches for articles through the New York Time API and saves it into our database (if the user decides to save it.)
 
