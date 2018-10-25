@@ -1,5 +1,19 @@
-navCust {
-  position:fixed;
+.navCust {
   top: 0;
   width: 100%;
+  color: white;
+  background-color: #7861ED;
+}
+
+.nav-item{
+  color: white;
+}
+.nytTitle{
+  background-color: #7D798F;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.feature {
+  color: pink;
 }

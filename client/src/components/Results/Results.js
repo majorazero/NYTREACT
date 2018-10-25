@@ -8,10 +8,10 @@ const Results = (props) => {
       <h4>{props.date}</h4>
       <h4>{props.descrip}</h4>
       <div>
-        <button className={(props.clickSave !== undefined) ? "btn btn-primary":"hide"} onClick={()=>{
+        <button className={(props.clickSave !== undefined) ? "btn resButt":"hide"} onClick={()=>{
             props.clickSave();
           }}>Save</button>
-        <button className={(props.onDelete !== undefined) ? "btn btn-primary":"hide"} onClick={props.onDelete}>Delete</button>
+        <button className={(props.onDelete !== undefined) ? "btn resButt":"hide"} onClick={props.onDelete}>Delete</button>
       </div>
     </div>
   );

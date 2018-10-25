@@ -1,7 +1,11 @@
 div .resultDiv {
-  background-color: lemonchiffon;
+  background-color: #F4FAD3;
   margin: 3px;
   padding: 20px;
+}
+
+h3 a{
+  color: #7861ED;
 }
 
 .hide {
@@ -10,4 +14,14 @@ div .resultDiv {
 
 .resultDiv{
   text-align: left;
+}
+
+.resButt {
+  background-color: #7861ED;
+  color: white;
+}
+.resButt:hover {
+  background-color: #D6ED61;
+  color: black;
+  border: #7861ED 1px solid;
 }

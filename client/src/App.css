@@ -32,8 +32,11 @@
 }
 
 .resultsBox, .searchBox, .savedBox {
-  background-color: lightblue;
+  background-color: #7861ED;
   margin: 10px;
   padding: 10px;
   text-align: center;
+}
+body {
+  background-image: url("https://crownlibrary.files.wordpress.com/2013/09/scan.jpg");
 }

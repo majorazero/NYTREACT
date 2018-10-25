@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import Results from "../Results/Results.js"; 
+import Results from "../Results/Results.js";
 import "./Search.css";
 
 class Search extends Component {
@@ -81,7 +81,7 @@ class Search extends Component {
             <div>
               <small>{this.state.message2}</small>
             </div>
-            <button className="btn btn-primary searchBt" type="submit">Submit</button>
+            <button className="btn searchBt" type="submit">Submit</button>
           </form>
         </div>
 
