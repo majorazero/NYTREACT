@@ -8,7 +8,7 @@ class Saved extends Component {
   state = {
     results: []
   }
-
+  
   componentDidMount(){
     this.fetch();
   }
@@ -39,6 +39,7 @@ class Saved extends Component {
   render(){
     return(
       <div className="savedBox">
+        <span>{this.state.random}</span>
         <h1>Your Saved Articles</h1>
         {this.populate()}
       </div>

@@ -7,3 +7,7 @@ div .resultDiv {
 .hide {
   display: none;
 }
+
+.resultDiv{
+  text-align: left;
+}

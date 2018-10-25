@@ -1,0 +1,9 @@
+.searchBt {
+  margin: 10px;
+}
+input {
+  width: 50%;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 3px;
+}

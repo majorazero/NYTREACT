@@ -6,25 +6,26 @@ import "./Search.css";
 
 class Search extends Component {
   state = {
-    topic: "something",
-    sYear: "19991212",
-    eYear: "20000101",
+    topic: "",
+    sYear: "",
+    eYear: "",
     results: [],
-    message: ""
+    message: "",
+    message2: ""
   }
 
   componentDidMount(){
     //for testing only
-    this.fetch();
+    //this.fetch();
   }
 
   fetch = () => {
     axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=702eb3676cd5414c906e440d5b73c3f7&q=${this.state.topic}&begin_date=${this.state.sYear.replace(/-/g,"")}&end_date=${this.state.eYear.replace(/-/g,"")}`).then((response) => {
-      console.log(response.data);
       this.setState({
         results: response.data.response.docs.map((item,i) => {
           if (i < 5){
             return {
+              message2: "",
               title: item.headline.main,
               descrip: item.snippet,
               loc: item.web_url,
@@ -46,13 +47,11 @@ class Search extends Component {
 
   handleSave = (id) => {
     axios.post("/api/saveArticle",{article: this.state.results[id]}).then((res)=>{
-      console.log(res.data);
       this.setState({message: res.data});
     });
   }
 
   handleChange = (event) => {
-    console.log(this.state);
     this.setState({
       [event.target.name]:event.target.value
     });
@@ -64,7 +63,7 @@ class Search extends Component {
       this.fetch();
     }
     else{
-      console.log("You didn't input all the fields yet!");
+      this.setState({message2:"You didn't input all the fields yet!"});
     }
   }
 
@@ -80,7 +79,10 @@ class Search extends Component {
             <input min="1851-09-18" onChange={this.handleChange} type="date" name="sYear" />
             <h3>End Year</h3>
             <input min="1851-09-18" onChange={this.handleChange} type="date" name="eYear" />
-            <button type="submit">Submit</button>
+            <div>
+              <small>{this.state.message2}</small>
+            </div>
+            <button className="btn btn-primary searchBt" type="submit">Submit</button>
           </form>
         </div>
 
@@ -88,8 +90,6 @@ class Search extends Component {
           <h2>Results</h2><span>{this.state.message}</span>
           {this.populate()}
         </div>
-
-        <Saved />
 
       </div>
     );
