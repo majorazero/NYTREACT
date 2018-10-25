@@ -11,11 +11,12 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+const routes = require("./controllers/api.js");
+app.use(routes);
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
-require("./controllers/api.js")(app);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytScrubber");
 
