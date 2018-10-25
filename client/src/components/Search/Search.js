@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
 import Results from "../Results/Results.js";
-import Saved from "../Saved/Saved.js";
 import "./Search.css";
 
 class Search extends Component {
