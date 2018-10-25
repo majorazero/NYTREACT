@@ -7,10 +7,10 @@ const Results = (props) => {
       <h3><a href={props.loc}>{props.title}</a></h3>
       <h4>{props.descrip}</h4>
       <div>
-        <button onClick={()=>{
+        <button className={(props.clickSave !== undefined) ? "":"hide"} onClick={()=>{
             props.clickSave();
-            //maybe ill just show it on the dom instead of restructuring this to stateful.
           }}>Save</button>
+        <button className={(props.onDelete !== undefined) ? "":"hide"} onClick={props.onDelete}>Delete</button>
       </div>
     </div>
   );

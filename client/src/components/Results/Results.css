@@ -3,3 +3,7 @@ div .resultDiv {
   margin: 3px;
   padding: 20px;
 }
+
+.hide {
+  display: none;
+}
