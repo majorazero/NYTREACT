@@ -8,7 +8,8 @@ class Search extends Component {
     topic: "something",
     sYear: "19991212",
     eYear: "20000101",
-    results: []
+    results: [],
+    message: ""
   }
 
   componentDidMount(){
@@ -26,7 +27,6 @@ class Search extends Component {
               descrip: item.snippet,
               loc: item.web_url
             };
-            // return <Results key={i} loc={item.web_url} title={item.headline.main} descrip={item.snippet} clickSave={() => {this.handleSave(i)}} />;
           }
         }).slice(0,5)
       })
@@ -37,16 +37,15 @@ class Search extends Component {
     if(this.state.results.length !== 0){
       return this.state.results.map((item,i) => {
         return <Results key={i} title={item.title} descrip={item.descrip} loc={item.loc} clickSave={() => {this.handleSave(i)}} />
-
       });
     }
   }
 
   handleSave = (id) => {
-    axios.post("/saveArticle",{article: this.state.results[id]}).then((res)=>{
+    axios.post("/api/saveArticle",{article: this.state.results[id]}).then((res)=>{
       console.log(res.data);
+      this.setState({message: res.data});
     });
-    console.log(id,this.state.results);
   }
 
   handleChange = (event) => {
@@ -83,7 +82,7 @@ class Search extends Component {
         </div>
 
         <div className="resultsBox">
-          <h1>Results</h1>
+          <h1>Results</h1><span>{this.state.message}</span>
           {this.populate()}
         </div>
 

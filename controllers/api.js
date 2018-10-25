@@ -1,10 +1,15 @@
 const Article = require("../models/article.js");
 
 module.exports = (app) => {
-  app.post("/saveArticle",(req,res)=>{
+
+  //app.get("/api/getSavedArticle")
+
+  app.post("/api/saveArticle",(req,res)=>{
     console.log(req.body.article);
     Article.create(req.body.article).then(data => {
-      res.json("Ok.");
+      res.json("Saved!");
+    }).catch((err) => {
+      res.json("You already saved that article!");
     });
   });
 }
