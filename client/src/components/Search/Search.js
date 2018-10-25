@@ -5,10 +5,15 @@ import "./Search.css";
 
 class Search extends Component {
   state = {
-    topic: "",
-    sYear: "",
-    eYear: "",
+    topic: "something",
+    sYear: "19991212",
+    eYear: "20000101",
     results: []
+  }
+
+  componentDidMount(){
+    //for testing only
+    this.fetch();
   }
 
   fetch = () => {
@@ -38,10 +43,14 @@ class Search extends Component {
   }
 
   handleSave = (id) => {
+    axios.post("/saveArticle",{article: this.state.results[id]}).then((res)=>{
+      console.log(res.data);
+    });
     console.log(id,this.state.results);
   }
 
   handleChange = (event) => {
+    console.log(this.state);
     this.setState({
       [event.target.name]:event.target.value
     });
@@ -60,16 +69,18 @@ class Search extends Component {
   render(){
     return(
       <div>
-        <h2>Search</h2>
-        <form onSubmit={this.handleSubmit}>
-          <h3>Topic</h3>
-          <input onChange={this.handleChange} type="text" name="topic" />
-          <h3>Start Year</h3>
-          <input min="1851-09-18" onChange={this.handleChange} type="date" name="sYear" />
-          <h3>End Year</h3>
-          <input min="1851-09-18" onChange={this.handleChange} type="date" name="eYear" />
-          <button type="submit">Submit</button>
-        </form>
+        <div className="searchBox">
+          <h2>Search</h2>
+          <form onSubmit={this.handleSubmit}>
+            <h3>Topic</h3>
+            <input onChange={this.handleChange} type="text" name="topic" />
+            <h3>Start Year</h3>
+            <input min="1851-09-18" onChange={this.handleChange} type="date" name="sYear" />
+            <h3>End Year</h3>
+            <input min="1851-09-18" onChange={this.handleChange} type="date" name="eYear" />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
 
         <div className="resultsBox">
           <h1>Results</h1>

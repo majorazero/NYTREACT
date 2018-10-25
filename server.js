@@ -17,6 +17,8 @@ app.get("*", (req, res) => {
 
 require("./controllers/api.js")(app);
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytScrubber");
+
 app.listen(PORT,()=>{
   console.log(`Listening in on...${PORT}`);
 })
