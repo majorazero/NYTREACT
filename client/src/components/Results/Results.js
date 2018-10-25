@@ -7,7 +7,7 @@ const Results = (props) => {
       <h3><a href={props.loc}>{props.title}</a></h3>
       <h4>{props.descrip}</h4>
       <div>
-        <button>Save</button>
+        <button onClick={props.clickSave}>Save</button>
       </div>
     </div>
   );
