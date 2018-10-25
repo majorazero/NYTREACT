@@ -30,6 +30,10 @@ class Saved extends Component {
 
   handleDelete = (id) => {
     console.log(id);
+    axios.delete("/api/delete",{data:{id}}).then((res) => {
+      console.log(res.data);
+      this.fetch();
+    });
   }
 
   render(){

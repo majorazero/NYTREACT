@@ -15,4 +15,11 @@ router.post("/api/saveArticle",(req,res)=>{
   });
 });
 
+router.delete("/api/delete",(req,res) => {
+  console.log(req.body.id);
+  Article.remove({_id:req.body.id}).then(data => {
+    res.json("Deleted!");
+  })
+});
+
 module.exports = router;
