@@ -5,6 +5,7 @@ Let's make a full stack apps.
 This is a fullstack (MERN) app that searches for articles through the New York Time API and saves it into our database (if the user decides to save it.)
 
 # See it in action!
+<img src="./demo.gif" />
 
 # Build With
 
